@@ -7,7 +7,7 @@ from sqlalchemy import Column, String, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship, backref
 
 
-class Place(BaseModel, Base if (getenv("HBNB_TYPE_STORAGE")=="db") else object):
+class Place(BaseModel, Base if (getenv("HBNB_TYPE_STORAGE") == "db") else object):
     """ A place to stay"""
 
     if getenv("HBNB_TYPE_STORAGE") == "db":
