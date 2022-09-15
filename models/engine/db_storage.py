@@ -12,6 +12,7 @@ from models.user import User
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
 
+
 class DBStorage:
     """Database storage"""
     __engine = None
@@ -38,14 +39,14 @@ class DBStorage:
             search = self.__session.query(cls)
             for object in search:
                 key = "{}.{}".format(type(object).__name__,
-                               object.id)
+                                     object.id)
                 result[key] = object
         elif cls is None:
             for class_ in classes:
                 search = self.__session.query(class_)
                 for object in search:
                     key = "{}.{}".format(type(object).__name__,
-                               object.id)
+                                         object.id)
                     result[key] = object
         return result
 
@@ -71,5 +72,8 @@ class DBStorage:
         self.__session = Session()
 
     def close(self):
-        """Close session"""
+        """
+        Call remove() method on the private session attribute
+        (self.__session) or close() on the class Session
+        """
         self.__session.close()
