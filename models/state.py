@@ -7,7 +7,8 @@ from models.city import City
 from os import getenv
 
 
-class State(BaseModel, Base if (getenv("HBNB_TYPE_STORAGE")=="db") else object):
+class State(BaseModel, Base
+            if (getenv("HBNB_TYPE_STORAGE") == "db") else object):
     """ State class """
     if getenv("HBNB_TYPE_STORAGE") == "db":
         __tablename__ = 'states'
@@ -29,4 +30,4 @@ class State(BaseModel, Base if (getenv("HBNB_TYPE_STORAGE")=="db") else object):
         for city in cities:
             if self.id == city.state_id:
                 result.append(city)
-        return(result)
+        return (result)
